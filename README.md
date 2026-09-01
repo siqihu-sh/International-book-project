@@ -13,6 +13,11 @@ The application demonstrates how a web application can connect to a relational d
 - JavaScript
 - Git and GitHub
 
+## Database Design
+
+The Entity Relationship Diagram for the application is shown below.
+
+[View the Entity Relationship Diagram](docs/database_schema_erd.pdf)
 ## Main Features
 
 - View requests, shipments, returns, recipients, and inventory in separate tabs
