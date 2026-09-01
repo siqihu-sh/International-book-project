@@ -161,6 +161,10 @@ try {
 
     <?php if ($selectedModule === 'requests'): ?>
         <p><a class="primary-action" href="request_create.php">Create Request</a></p>
+    <?php elseif ($selectedModule === 'shipments'): ?>
+        <p><a class="primary-action" href="shipment_create.php">Create Shipment</a></p>
+    <?php elseif ($selectedModule === 'returns'): ?>
+        <p><a class="primary-action" href="return_create.php">Process Return</a></p>
     <?php endif; ?>
     <p><a href="manage.php?type=<?= h($modules[$selectedModule]['manage']) ?>">Manage Records</a></p>
 

@@ -118,6 +118,12 @@ try {
             if ($type === 'request') {
                 throw new InvalidArgumentException('Use Create Request to create a new request.');
             }
+            if ($type === 'shipment') {
+                throw new InvalidArgumentException('Use Create Shipment to create a new shipment.');
+            }
+            if ($type === 'return') {
+                throw new InvalidArgumentException('Use Process Return to create a new return.');
+            }
             $fields = array_keys($config['fields']);
             $values = [];
             foreach ($fields as $field) {
@@ -274,6 +280,10 @@ try {
 
     <?php if ($type === 'request'): ?>
         <p><a href="request_create.php">Use Create Request to add a request.</a></p>
+    <?php elseif ($type === 'shipment'): ?>
+        <p><a href="shipment_create.php">Use Create Shipment to add a shipment.</a></p>
+    <?php elseif ($type === 'return'): ?>
+        <p><a href="return_create.php">Use Process Return to add a return.</a></p>
     <?php else: ?>
         <h2><?= $editRow === null ? 'Add record' : 'Edit record' ?></h2>
         <form method="post" action="">
