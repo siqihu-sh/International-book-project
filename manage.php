@@ -268,15 +268,17 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= h($config['title']) ?> - Data Management</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <main>
     <h1><?= h($config['title']) ?></h1>
     <p><a href="index.php?module=<?= h($backModule) ?>">Back to application</a></p>
 
-    <?php if ($message !== ''): ?><p><?= h($message) ?></p><?php endif; ?>
-    <?php if ($error !== ''): ?><p>Error: <?= h($error) ?></p><?php endif; ?>
+    <?php if ($message !== ''): ?><p class="message" role="status" aria-live="polite"><?= h($message) ?></p><?php endif; ?>
+    <?php if ($error !== ''): ?><p class="error" role="alert"><?= h($error) ?></p><?php endif; ?>
 
     <?php if ($type === 'request'): ?>
         <p><a href="request_create.php">Use Create Request to add a request.</a></p>
@@ -313,7 +315,9 @@ try {
     <?php if ($rows === []): ?>
         <p>No records found.</p>
     <?php else: ?>
-        <table border="1" cellpadding="4" cellspacing="0">
+        <div class="table-scroll" role="region" tabindex="0" aria-label="Existing records table">
+        <table>
+            <caption>Existing records</caption>
             <thead>
             <tr>
                 <?php foreach (array_keys($rows[0]) as $field): ?>
@@ -341,6 +345,8 @@ try {
             <?php endforeach; ?>
             </tbody>
         </table>
+        </div>
     <?php endif; ?>
+    </main>
 </body>
 </html>

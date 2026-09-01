@@ -130,18 +130,23 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>International Book Project</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>International Book Project</h1>
-    <p>Book distribution management</p>
+    <header>
+        <h1>International Book Project</h1>
+        <p>Book distribution management</p>
+    </header>
+
+    <main>
 
     <?php if ($message !== ''): ?>
-        <p><?= h($message) ?></p>
+        <p class="message" role="status" aria-live="polite"><?= h($message) ?></p>
     <?php endif; ?>
     <?php if ($error !== ''): ?>
-        <p>Error: <?= h($error) ?></p>
+        <p class="error" role="alert"><?= h($error) ?></p>
     <?php endif; ?>
 
     <nav aria-label="Business sections">
@@ -149,7 +154,8 @@ try {
             <?php foreach ($modules as $moduleKey => $module): ?>
                 <li>
                     <a class="<?= $moduleKey === $selectedModule ? 'active' : '' ?>"
-                       href="?module=<?= h($moduleKey) ?>">
+                       href="?module=<?= h($moduleKey) ?>"
+                       <?= $moduleKey === $selectedModule ? 'aria-current="page"' : '' ?>>
                         <?= h($module['label']) ?>
                     </a>
                 </li>
@@ -171,7 +177,9 @@ try {
     <?php if ($rows === []): ?>
         <p>No records found.</p>
     <?php else: ?>
+        <div class="table-scroll" role="region" tabindex="0" aria-label="<?= h($modules[$selectedModule]['label']) ?> data table">
         <table>
+            <caption><?= h($modules[$selectedModule]['label']) ?> data</caption>
             <thead>
             <tr>
                 <?php foreach (array_keys($rows[0]) as $column): ?>
@@ -189,6 +197,8 @@ try {
             <?php endforeach; ?>
             </tbody>
         </table>
+        </div>
     <?php endif; ?>
+    </main>
 </body>
 </html>

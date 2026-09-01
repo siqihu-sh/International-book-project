@@ -77,16 +77,18 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create Request - International Book Project</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/request_create.js" defer></script>
 </head>
 <body>
+    <main>
     <h1>Create Request</h1>
-    <p><a href="index.php?table=request">Back to Requests</a></p>
+    <p><a href="index.php?module=requests">Back to Requests</a></p>
 
     <?php if ($error !== ''): ?>
-        <p>Error: <?= pageEscape($error) ?></p>
+        <p class="error" role="alert"><?= pageEscape($error) ?></p>
     <?php endif; ?>
 
     <?php if ($recipients === [] || $users === [] || $items === []): ?>
@@ -166,7 +168,9 @@ try {
             </p>
 
             <h2>Requested items</h2>
+            <div class="table-scroll" role="region" tabindex="0" aria-label="Requested items table">
             <table class="request-items">
+                <caption>Requested items</caption>
                 <thead>
                 <tr>
                     <th>Item</th>
@@ -197,6 +201,7 @@ try {
                 <?php endforeach; ?>
                 </tbody>
             </table>
+            </div>
 
             <p>
                 <button type="button" id="add-item">Add another item</button>
@@ -222,5 +227,6 @@ try {
         </template>
 
     <?php endif; ?>
+    </main>
 </body>
 </html>

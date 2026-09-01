@@ -173,15 +173,17 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create Shipment</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <main>
     <h1>Create Shipment</h1>
     <p><a href="index.php?module=shipments">Back to Shipments</a></p>
 
-    <?php if ($message !== ''): ?><p><?= h($message) ?></p><?php endif; ?>
-    <?php if ($error !== ''): ?><p>Error: <?= h($error) ?></p><?php endif; ?>
+    <?php if ($message !== ''): ?><p class="message" role="status" aria-live="polite"><?= h($message) ?></p><?php endif; ?>
+    <?php if ($error !== ''): ?><p class="error" role="alert"><?= h($error) ?></p><?php endif; ?>
 
     <?php if ($requests === []): ?>
         <p>No requests are available for shipment.</p>
@@ -248,5 +250,6 @@ try {
             <button type="submit">Create Shipment</button>
         </form>
     <?php endif; ?>
+    </main>
 </body>
 </html>

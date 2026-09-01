@@ -183,14 +183,16 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Process Return</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <main>
     <h1>Process Return</h1>
     <p><a href="index.php?module=returns">Back to Returns</a></p>
 
-    <?php if ($error !== ''): ?><p>Error: <?= h($error) ?></p><?php endif; ?>
+    <?php if ($error !== ''): ?><p class="error" role="alert"><?= h($error) ?></p><?php endif; ?>
 
     <?php if ($shipments === []): ?>
         <p>No shipments are available for return.</p>
@@ -233,5 +235,6 @@ try {
             <button type="submit">Process Return</button>
         </form>
     <?php endif; ?>
+    </main>
 </body>
 </html>
